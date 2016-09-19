@@ -1,0 +1,27 @@
+<table style="margin: 0 auto; text-align: left">
+  <tr>
+    <th>Title</th>
+ 	<th>Price</th>
+    <th>Location</th>
+	<th>Home Type</th>
+	<th>Occupants</th>
+	<th>Owner</th>
+  </tr>
+
+  <% Listing.all.each do |x| %>
+    <tr>
+    <td style="text-align: center"><a href="/listings/<%=x.id%>"><%= x.title %></a></td>
+    <td style="text-align: center"><%= x.price %> </td> 
+    <td style="text-align: center"><%= x.location %></td>
+    <td style="text-align: center"><%= x.home_type %> </td> 
+    <td style="text-align: center"><%= x.num_of_people %> </td> 
+    <td style="text-align: center"><%= x.user.email%> </td> 
+    </tr>
+  <% end %>
+
+</table>
+
+<br><br><%= link_to "Create Listing", new_listing_path %>
+
+<br><br><%= link_to "Home Page", root_path %>
+

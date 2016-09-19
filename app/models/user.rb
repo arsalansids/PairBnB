@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-<<<<<<< HEAD
   # include Clearance::User
 
    has_many :authentications, :dependent => :destroy
+   has_many :listings 
 
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 end
 
 
-=======
-  include Clearance::User
-end
->>>>>>> master
+
+#   include Clearance::User
+# end
+

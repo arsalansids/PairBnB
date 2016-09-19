@@ -1,0 +1,12 @@
+<br>
+Showing listing for <%= @listing.title %>
+<br><br>
+Price: $<%=@listing.price %>/night
+<br>
+Location: <%= @listing.location %><br>
+Home Type: <%= @listing.home_type %><br>
+Number of People: <%= @listing.num_of_people %><br>
+
+Listing by: <%= @listing.user.email %>
+
+<br><br><%= link_to "Edit Listing", edit_listing_path %>
