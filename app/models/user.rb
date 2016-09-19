@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
+<<<<<<< HEAD
   # include Clearance::User
 
    has_many :authentications, :dependent => :destroy
@@ -26,3 +27,7 @@ class User < ActiveRecord::Base
 end
 
 
+=======
+  include Clearance::User
+end
+>>>>>>> master
