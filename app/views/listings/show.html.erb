@@ -7,6 +7,8 @@ Location: <%= @listing.location %><br>
 Home Type: <%= @listing.home_type %><br>
 Number of People: <%= @listing.num_of_people %><br>
 
-Listing by: <%= @listing.user.email %>
+Listing by: <%= @listing.user.email %><br><br>
+
+<%= image_tag (@listing.avatars[0].large.url) %>
 
 <br><br><%= link_to "Edit Listing", edit_listing_path %>

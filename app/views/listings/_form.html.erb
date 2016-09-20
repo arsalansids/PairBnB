@@ -15,6 +15,9 @@
 <%= f.label :num_of_people %><br>
 <%= f.text_field :num_of_people %><br>
 <br>
-<%= f.submit %>
 
+
+<%= f.file_field :avatars, multiple: true %><br><br>
+<%= f.submit %>
 <% end %> 
+

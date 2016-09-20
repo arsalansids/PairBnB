@@ -41,6 +41,11 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
 
     #allows us list all of the params of listing
     def listing_params
-        params.require(:listing).permit(:title, :location, :home_type, :price, :num_of_people, :user_id)
+        params.require(:listing).permit(:title, :location, :home_type, :price, :num_of_people, :user_id, {avatars:[]})
     end
+
+    #adding avatars array 
+    # def listing_params
+    # params.require(:listing).permit(:name, :price, :location, {avatars:[]})
+    # end
 end

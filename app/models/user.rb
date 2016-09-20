@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   def password_optional?
     true
   end
-  
+  mount_uploaders :avatars, AvatarUploader
 end
 
 
