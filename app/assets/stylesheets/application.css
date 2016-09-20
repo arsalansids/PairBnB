@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+/*NAV BAR code*/
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}
+
+.background { 
+
+	padding-top:0;
+	padding-bottom:420px;
+	background-color:lightblue;
+	color:white;
+	font-size: 18px;
+	background-image: url(http://i.dailymail.co.uk/i/pix/2016/05/26/13/34A309FB00000578-0-image-a-25_1464267205639.jpg);
+	background-repeat: no-repeat;
+    background-size: cover;
+	text-align: center;
+	height: 600px;
+	font-family:Helvetica; 
+	width: 100%;
+	z-index: 1000;
+}
+
+.titles {
+	color: #484848;
+	font-family:Helvetica; 
+	text-align: center;
+}
+
+
