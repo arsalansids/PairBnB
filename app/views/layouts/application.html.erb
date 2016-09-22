@@ -15,6 +15,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<!-- FONT from GOOGLE -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
 
 <!-- BOOTSTRAP NAV BAR FIXED -->
 
@@ -53,37 +55,39 @@
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+          <div class="nav navbar-nav navbar-left">
             <li><a href="/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1280px-Airbnb_Logo_B%C3%A9lo.svg.png" width="110" height="35"></a></li>
+          </div>
 
+          <div class="nav navbar-nav navbar-right">
             <li><a href="/listings">Search Listings</a></li>
             <li><a href="/listings/new">Become a Host</a></li>
             <li><a href="">Help</a></li>
 
             <% if signed_in? %>
-            <li><a href="/users/<%=current_user.id%>"><%= current_user.email %></a><li>
-            <li><%= link_to "Sign Out",sign_out_path, method: :delete%><li>
-            <% else %>
+             <!-- DROPDOWN MENU BELOW -->
+            <li class="dropdown">
+
+            <% if current_user.avatars.present? %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatars[0].thumb.url, :class => "profile_pic" %><span class="caret"></span></a>
+              <%else%>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
+
+              <%end%>
+              <ul class="dropdown-menu">
+                <li><a href="/users/<%=current_user.id%>">View Profile</a></li>
+                <li><%= link_to "Sign Out",sign_out_path, method: :delete%></li>
+              </ul>
+            </li>
+              <% else %>
             <li><a href="/sign_up">Sign Up</a></li>
             <li><a href="/sign_in">Log In</a></li>
             <% end %>
-
-            <!-- DROPDOWN MENU BELOW -->
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
+            </div>
           </ul>
 
         </div><!--/.nav-collapse -->

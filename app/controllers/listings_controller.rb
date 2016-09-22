@@ -21,6 +21,12 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
         
     end
 
+    def tag
+       @tagged = Listing.tagged_with(params[:tag_id])
+       @tag = params[:tag_id]
+    end
+
+
 	# def edit
         
  #    end
@@ -41,7 +47,7 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
 
     #allows us list all of the params of listing
     def listing_params
-        params.require(:listing).permit(:title, :location, :home_type, :price, :num_of_people, :user_id, {avatars:[]})
+        params.require(:listing).permit(:title, :location, :home_type, :price, :num_of_people, :user_id, :tag_list, {avatars:[]})
     end
 
     #adding avatars array 
