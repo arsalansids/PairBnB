@@ -15,6 +15,13 @@
 <%= f.label :num_of_people %><br>
 <%= f.text_field :num_of_people %><br>
 <br>
-<%= f.submit %>
 
+<%= f.label :tag_list, "Tags (separated by commas)"  %><br>
+<%= f.text_field :tag_list %><br>
+<br>
+
+
+<%= f.file_field :avatars, multiple: true %><br><br>
+<%= f.submit %>
 <% end %> 
+

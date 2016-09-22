@@ -10,7 +10,15 @@ Rails.application.routes.draw do
   #omniauth route
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   resources :users, only: [:show, :edit, :update, :destroy] 
-  resources :listings
+  resources :listings do 
+    resources :reservations, only: [:new, :create, :destroy]
+  end
+  # do 
+  #   #reservations nested under listings
+  #   resources :reservations, only [:create, :destroy]
+  # end
+
+ get "/listings/tags/:tag_id" => "listings#tag", as: "tags"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

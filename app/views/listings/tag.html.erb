@@ -1,0 +1,6 @@
+<br>Listings with tag: <%= @tag %><br><br>
+
+<% @tagged.each do |t|%>
+	<a href="/listings/<%=t.id%>"><%= t.title %></a><br>
+	Price: <%= t.price %><br>
+	<% end %>
