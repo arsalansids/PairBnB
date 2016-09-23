@@ -26,10 +26,17 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
        @tag = params[:tag_id]
     end
 
-
-	# def edit
-        
- #    end
+    def index 
+        listings_per_page = 3
+        params[:page] = 1 unless params[:page]
+        first_listing = (params[:page].to_i - 1) * listings_per_page
+        listings = Listing.all
+        @total_pages = listings.count/listings_per_page
+        if listings.count % listings_per_page > 0
+            @total_pages += 1
+        end
+        @listing = listings[first_listing...(first_listing + listings_per_page)]
+    end 
 
     def update
       if @listing.update(listing_params)
