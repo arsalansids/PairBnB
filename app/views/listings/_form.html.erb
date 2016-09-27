@@ -15,13 +15,28 @@
 <%= f.label :num_of_people %><br>
 <%= f.text_field :num_of_people %><br>
 <br>
-
+<!-- THE TAG TEXT BOX is not part of AirBnb, also mine works funky -->
+<!-- 
 <%= f.label :tag_list, "Tags (separated by commas)"  %><br>
-<%= f.text_field :tag_list %><br>
+<%= f.text_field :tag_list, { :multiple => true }%> -->
+<br>
+<br>
+<%= f.label :wifi %>
+<%= f.check_box :tag_list, { :multiple => true }, 'Wifi', nil %>
+
+<%= f.label :pool %>
+<%= f.check_box :tag_list, { :multiple => true }, 'Pool', nil %>
+
+<%= f.label :air_conditioning %>
+<%= f.check_box :tag_list, { :multiple => true }, 'Air Conditioning', nil %>
+
+<%= f.label :parking %>
+<%= f.check_box :tag_list, { :multiple => true }, 'Parking', nil %>
+<br>
 <br>
 
-
 <%= f.file_field :avatars, multiple: true %><br><br>
+
 <%= f.submit %>
 <% end %> 
 

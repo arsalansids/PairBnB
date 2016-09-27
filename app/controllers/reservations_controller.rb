@@ -18,6 +18,15 @@ class ReservationsController < ApplicationController
         end
 	end
 
+	def destroy #Using AJAX and JQUERY
+		@reservation = Reservation.find(params[:id])
+		@reservation.destroy
+		respond_to do |format|
+			format.html {redirect_to user_path(current_user.id)}
+			format.js
+		end
+	end
+
 	private
     def reservations_params
         params.require(:reservation).permit(:listing_id, :user_id, :start_date, :end_date)
