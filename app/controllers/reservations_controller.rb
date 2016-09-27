@@ -18,10 +18,13 @@ class ReservationsController < ApplicationController
         end
 	end
 
-	def destroy
+	def destroy #Using AJAX and JQUERY
 		@reservation = Reservation.find(params[:id])
 		@reservation.destroy
-        redirect_to user_path(current_user.id)
+		respond_to do |format|
+			format.html {redirect_to user_path(current_user.id)}
+			format.js
+		end
 	end
 
 	private
