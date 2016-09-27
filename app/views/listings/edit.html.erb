@@ -1,3 +1,5 @@
 <br>Edit Listing<br><br>
 
 <%= render 'form' %>
+<br>
+<%= link_to "Delete Listing", listing_path(@listing.id), method: :delete, data: {confirm: "Are you sure?"}%>

@@ -10,8 +10,9 @@ Number of People: <%= @listing.num_of_people %><br>
 Listing by: <%= @listing.user.email %><br><br>
 
 <%= image_tag (@listing.avatars[0].large.url) %><br><br>
+Tags: 
 <% @listing.tag_list.each do |tag|%>
-Tags: <%=link_to tag, tags_path(tag)%>
+<%=link_to tag, tags_path(tag)%>
 <%end%> 
 
  <% if current_user.id == @listing.user_id %>

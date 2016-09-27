@@ -26,3 +26,78 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+THIS BELOW IS the code for adding date picker to reservation show page:
+<!-- ANOTHER FORM IN RAILS -->
+
+ <h2><%= t(".title") %></h2>
+ <%= form_for ([@listing, @reservation]) do |form| %>
+
+ <h3>Check In Date:</h3>
+   <%= form.label :start_date %>
+   <%= form.text_field :start_date %>
+
+
+<h3>Check Out Date:</h3>
+   <%= form.label :end_date %>
+   <%= form.text_field :end_date %>
+
+
+ <div class="control">
+   <%= form.label :nb_guests %>
+   <%= form.number_field :nb_guests, placeholder: "Number of Guests", class: "nb_guests", id: "nb_guests" %>
+ </div>
+     
+ <h1>Price per night:</h1><span id="p_p_n" class="title is-1"><%= @listing.price_per_night %></span>
+
+ <p >Total price:</p><div id="totalprice">0</div>
+
+   <%= form.submit %>
+   <% end %>    
+<!-- END OF THE FORM -->
+
+<% if @errors %>
+ <% for mess in @errors do %> 
+ <p><%= mess %></p>
+ <% end %>
+<% end %>
+
+<p id="chin" class="title is-2"></p>
+<p id="chout" class="title is-2"></p>
+
+<script>
+$("#reservation_start_date").datepicker({dateFormat: "yy/mm/dd"});
+$("#reservation_end_date").datepicker({dateFormat: "yy/mm/dd"});
+
+ var date_debut, date_fin;
+
+ var parseDateDebut = function(input){
+   date = new Date(input);
+   return date;
+ };
+
+ $("#reservation_start_date").change(function(){
+   date_debut = parseDateDebut($("#reservation_start_date").val());
+   $("#chin").html(date_debut);
+   if (date_fin != undefined){
+     $('#totalprice').html(calculateDuration(date_debut, date_fin));
+   }
+ });
+
+ $("#reservation_end_date").change(function(){
+   date_fin = parseDateDebut($("#reservation_end_date").val()); 
+   $("#chout").html(date_fin);
+   if (date_debut != undefined){
+     $('#totalprice').html(calculateDuration(date_debut, date_fin));
+   };
+ });
+
+ var calculateDuration = function(date_debut, date_fin){
+   var price = $("#p_p_n").html();
+   var ppn = parseFloat(price);
+
+   var duration = Math.ceil((date_fin - date_debut) / (1000 * 3600 * 24));
+   return total = duration * ppn;
+ }
+</script>

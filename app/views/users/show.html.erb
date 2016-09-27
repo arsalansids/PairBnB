@@ -14,5 +14,9 @@ Start date: <%= r.start_date.strftime("%v") %><br>
 End date: <%= r.end_date.strftime("%v") %><br>
 Duration: <%= r.stay_duration %> days<br>
 Total Price: $<%= r.total_price %>.00 <br><br>
+<%=link_to "Cancel Booking", listing_reservation_path(r.listing_id, r.id), method: :delete, data: {confirm: "Are you sure you want to cancel this booking?"} %>
 <% end %>
+
+<!--  link_to "Cancel Booking", listing_reservation_path(r.id), method: :delete, data: {confirm: "Are you sure you want to cancel this booking?"}-->
+
 

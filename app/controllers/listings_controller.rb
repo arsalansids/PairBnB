@@ -7,6 +7,7 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
     end
 
    def create
+        params[:listing][:tag_list] = params[:listing][:tag_list].join(',')
         @listing = current_user.listings.new(listing_params)
         if @listing.save
             #i want to go to my listing show page
@@ -17,6 +18,12 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
 
     end
     
+   def destroy
+        Reservation.where(listing_id: @listing.id).destroy_all
+        @listing.destroy
+        redirect_to listings_path
+    end
+
     def show
         
     end
@@ -39,6 +46,7 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
     end 
 
     def update
+    params[:listing][:tag_list] = params[:listing][:tag_list].join(',')
       if @listing.update(listing_params)
     	redirect_to listing_path(@listing.id)
       else
@@ -56,6 +64,8 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
     def listing_params
         params.require(:listing).permit(:title, :location, :home_type, :price, :num_of_people, :user_id, :tag_list, {avatars:[]})
     end
+
+
 
     #adding avatars array 
     # def listing_params
