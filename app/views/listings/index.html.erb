@@ -2,7 +2,7 @@
 <br><br><br><br><br>
 <div class="container-fluid">
   <div class="row">
-    <% @listing.each do |x| %>
+    <% @listings.each do |x| %>
     <div class="col-md-4" style="background-color:white; text-align:center;"> <a href="/listings/<%=x.id%>"><%= x.title %></a><br>
     <a href="/listings/<%=x.id%>"> <%=image_tag (x.avatars[0].square.url)%></a> <br> $<%= x.price %>/night <br> <%= x.location %>  
     </div>
@@ -15,15 +15,19 @@
 
 <br><br><%= link_to "Create Listing", new_listing_path %>
 
-<br><br><%= link_to "Home Page", root_path %>
-
-
+<br><br>
 <!-- PAGIENATION -->
+<% if @index_page %>
 <div>
     <% (1..@total_pages).each do |page| %>
         <%= link_to page, controller: "listings", action: "index", page: page %>&nbsp;
     <% end %>
 </div>
-
-
+<% else %>
+<div>
+    <% (1..@total_pages).each do |page| %>
+        <%= link_to page, controller: "listings", action: "search", page: page %>&nbsp;
+    <% end %>
+</div>
+<% end %>
 

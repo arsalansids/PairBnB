@@ -1,9 +1,8 @@
 <br>
-Showing profile for <%= current_user.email %>
-<%= current_user.id%>
 <%if current_user.avatars.present?%>
-<%= image_tag (current_user.avatars[0].thumb.url)%>
+<%= image_tag (current_user.avatars[0].thumb.url)%><br>
 <%end%>
+Showing profile for <%= current_user.email %>
 <br><br>
 
 <br><br><%= link_to "Edit Profile", edit_user_path %><br><br>

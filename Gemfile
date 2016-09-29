@@ -24,6 +24,9 @@ gem "figaro"
 gem 'omniauth'
 gem 'omniauth-facebook' 
 
+#Searching
+gem 'searchkick'
+
 #CarrierWave is for file uploading
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 

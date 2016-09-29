@@ -16,8 +16,8 @@ Rails.application.routes.draw do
 
   resources :payments
 
-
-
+  get '/search', to: 'listings#search'
+  get '/search_results' => "listings#search_results", as: "search_results"
   # do 
   #   #reservations nested under listings
   #   resources :reservations, only [:create, :destroy]

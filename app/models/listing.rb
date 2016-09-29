@@ -4,4 +4,5 @@ class Listing < ActiveRecord::Base
 	validates :title, presence: true 
 	mount_uploaders :avatars, AvatarUploader
 	acts_as_taggable # Alias for acts_as_taggable_on :tags
+	searchkick match: :word_start, searchable: [:name, :location]
 end
