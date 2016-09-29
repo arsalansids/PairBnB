@@ -1,6 +1,7 @@
 class Reservation < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :listing
+	has_many :payments
 	validate :start_must_be_before_end_time
  	validate :start_must_be_from_today
  	validate :check_availability?

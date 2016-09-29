@@ -11,8 +11,13 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   resources :users, only: [:show, :edit, :update, :destroy] 
   resources :listings do 
-    resources :reservations, only: [:new, :create, :destroy]
+    resources :reservations, only: [:new, :create, :destroy] 
   end
+
+  resources :payments
+
+  get '/search', to: 'listings#search'
+  get '/search_results' => "listings#search_results", as: "search_results"
   # do 
   #   #reservations nested under listings
   #   resources :reservations, only [:create, :destroy]

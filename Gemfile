@@ -24,10 +24,18 @@ gem "figaro"
 gem 'omniauth'
 gem 'omniauth-facebook' 
 
+#Searching
+gem 'searchkick'
+
 #CarrierWave is for file uploading
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 gem 'mini_magick'
+
+#active job
+gem 'sidekiq'
+
+gem 'braintree'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

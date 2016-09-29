@@ -7,7 +7,7 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
     end
 
    def create
-        params[:listing][:tag_list] = params[:listing][:tag_list].join(',')
+        params[:listing][:tag_list] = params[:listing][:tag_list].join(',')if params[:listing][:tag_list]
         @listing = current_user.listings.new(listing_params)
         if @listing.save
             #i want to go to my listing show page
@@ -34,6 +34,7 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
     end
 
     def index 
+        @index_page = true 
         listings_per_page = 3
         params[:page] = 1 unless params[:page]
         first_listing = (params[:page].to_i - 1) * listings_per_page
@@ -42,11 +43,32 @@ before_action :set_listing, only: [:show, :update, :edit, :destroy]
         if listings.count % listings_per_page > 0
             @total_pages += 1
         end
-        @listing = listings[first_listing...(first_listing + listings_per_page)]
+        @listings = listings[first_listing...(first_listing + listings_per_page)]
     end 
 
+    def search
+        @index_page = false 
+        @listings = Listing.search(params[:term], fields: ["name", "location"], mispellings: {below: 5})
+
+        
+        if @listings.blank?
+
+          redirect_to listings_path, flash:{danger: "no successful search result"}
+        else
+        listings_per_page = 3
+        params[:page] = 1 unless params[:page]
+        first_listing = (params[:page].to_i - 1) * listings_per_page
+        @total_pages = @listings.count/listings_per_page
+            if @listings.count % listings_per_page > 0
+                @total_pages += 1
+            end
+
+          render :index
+        end
+    end
+
     def update
-    params[:listing][:tag_list] = params[:listing][:tag_list].join(',')
+    params[:listing][:tag_list] = params[:listing][:tag_list].join(',') if params[:listing][:tag_list]
       if @listing.update(listing_params)
     	redirect_to listing_path(@listing.id)
       else

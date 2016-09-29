@@ -1,9 +1,8 @@
 <br>
-Showing profile for <%= current_user.email %>
-<%= current_user.id%>
 <%if current_user.avatars.present?%>
-<%= image_tag (current_user.avatars[0].thumb.url)%>
+<%= image_tag (current_user.avatars[0].thumb.url)%><br>
 <%end%>
+Showing profile for <%= current_user.email %>
 <br><br>
 
 <br><br><%= link_to "Edit Profile", edit_user_path %><br><br>
@@ -15,10 +14,19 @@ Start date: <%= r.start_date.strftime("%v") %><br>
 End date: <%= r.end_date.strftime("%v") %><br>
 Duration: <%= r.stay_duration %> days<br>
 Total Price: $<%= r.total_price %>.00 <br>
-<%=link_to "Cancel Booking", listing_reservation_path(r.listing_id, r.id), remote: true, method: :delete, data: {confirm: "Are you sure you want to cancel this booking?"} %><br><br>
+
+ <strong>Payment Status:</strong>
+      <% if r.payments.where(status: :authorized).count == 0%>
+      <span class="btn btn-danger"> NOT PAID </span>
+
+       <%= link_to 'Pay Now' , new_payment_path + "?id=" + r.id.to_s, class: "btn btn-warning"  %>
+      <% else %>
+      <span class="btn btn-success">PAID</span>
+      <% end %>
+
+
+<br><%=link_to "Cancel Booking", listing_reservation_path(r.listing_id, r.id), remote: true, method: :delete, data: {confirm: "Are you sure you want to cancel this booking?"} %><br><br>
 </div>
 <% end %>
 
 <!--  link_to "Cancel Booking", listing_reservation_path(r.id), method: :delete, data: {confirm: "Are you sure you want to cancel this booking?"}-->
-
-

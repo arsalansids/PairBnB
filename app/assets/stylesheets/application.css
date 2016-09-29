@@ -89,3 +89,15 @@ body {
  width: 100%;
 
 }
+
+#term{
+	 font-size: 20px;
+	 width: 600px;
+	 text-align: center;
+	 height: 50px;
+	 color: #484848;
+}
+
+#new_listing > input.btn.btn-primary{
+	 height: 50px;
+}
