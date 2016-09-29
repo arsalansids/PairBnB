@@ -1,5 +1,32 @@
 
+<div class="video_container">
+    <h1><span>Rent unique places to stay from local hosts in 190+ countries.</span><br>Welcome <%=current_user.name if current_user != nil%></h1>
+          <video autoplay loop="loop" preload="auto" class="photo">
+             <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.mp4" type='video/mp4'>
+               <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.webm" type='video/webm'>
+          </video>
 
-<br><br><%= link_to "Create Listing", new_listing_path %>
+<div>          
+<%= form_for Listing.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
+	<%= text_field_tag :term, params[:term], placeholder:"Where do you wanna go?" %>
+	<%= f.submit 'search', class: 'btn btn-primary' %>
+<% end %>
+</div>
 
-<br><br><%= link_to "Search Listings", listings_path %>
+</div>
+
+<div class="titles" style="padding-top:200px; padding-bottom:200px">
+	<h1 style="font-size: 32px;">Just for the weekend</h1>
+	<p style="font-size: 15px">Discover new, inspiring places close to home.</p>
+</div>
+
+<div class="background" >
+	<div class="navigation" style="padding-top:20px">
+
+	<h1 style="padding-top:190px; font-size:70px">LIVE THERE</h1>
+	<p>Book homes from local hosts in 191+ countries and experience a place like you live there.</p>
+
+	</div>
+</div>
+
+

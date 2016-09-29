@@ -13,3 +13,91 @@
  *= require_tree .
  *= require_self
  */
+
+/*NAV BAR code*/
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}
+
+.background { 
+
+	padding-top:0;
+	padding-bottom:420px;
+	background-color:lightblue;
+	color:white;
+	font-size: 18px;
+	background-image: url(http://i.dailymail.co.uk/i/pix/2016/05/26/13/34A309FB00000578-0-image-a-25_1464267205639.jpg);
+	background-repeat: no-repeat;
+    background-size: cover;
+	text-align: center;
+	height: 600px;
+	font-family:Helvetica; 
+	width: 100%;
+	z-index: 1000;
+}
+
+.titles {
+	color: #484848;
+	font-family:Helvetica; 
+	text-align: center;
+}
+
+.profile_pic {	
+  width: 40px;
+  height: 40px;
+  border: 2px solid;
+  border-radius: 50%;
+
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+/*VIDEO in background*/
+.video_container {
+ position: relative;
+ background:none;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ background-size: cover;
+ text-align: center;
+ color: #fff;
+ padding-top: 130px;
+ min-height: 500px;
+ letter-spacing: 2px;
+ font-family: "Montserrat", sans-serif;
+}
+.video_container h1 {
+ font-size: 50px;
+ line-height: 1.3;
+}
+.video_container h1 span {
+ font-size: 20px;
+ color: #e8f380 ;
+ border-bottom: 2px solid #e8f380 ;
+ padding-bottom: 12px;
+ line-height: 3;
+}
+.photo {
+ position: absolute;
+ object-fit: contain;
+ z-index: -5;
+ bottom: 0px;
+ left: 0px;
+ width: 100%;
+
+}
+
+#term{
+	 font-size: 20px;
+	 width: 600px;
+	 text-align: center;
+	 height: 50px;
+	 color: #484848;
+}
+
+#new_listing > input.btn.btn-primary{
+	 height: 50px;
+}

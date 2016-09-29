@@ -24,6 +24,24 @@ gem "figaro"
 gem 'omniauth'
 gem 'omniauth-facebook' 
 
+#Searching
+gem 'searchkick'
+
+#CarrierWave is for file uploading
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+gem 'mini_magick'
+
+#active job
+gem 'sidekiq'
+
+#For managing, stopping rails server and Sidekiq
+gem 'foreman'
+
+gem 'rails_12factor'
+
+gem 'braintree'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -32,6 +50,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+#allows tags
+gem 'acts-as-taggable-on', '~> 4.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

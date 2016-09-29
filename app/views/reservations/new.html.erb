@@ -1,0 +1,52 @@
+<%= form_for [@listing, @reservation] do |f| %>
+
+<%= f.label :Start_date %><br>
+<%= f.date_select :start_date %><br>
+
+<%= f.label :End_date %><br>
+<%= f.date_select :end_date %><br>
+
+<%= f.hidden_field :user_id, value: current_user.id %>
+
+<br><%= f.submit %><br>
+<% end %> 
+
+Price Per Night: <div id="price_per_night"><%=@listing.price%></div>
+Total Price: <div id="totalprice">0</div><br>
+
+<%= @error if @error%>
+
+<% if @unavailable%>
+<% @unavailable.each do |x| %>
+<br><%= x.strftime("%B %d, %Y")%>
+<% end %>
+<% end %>
+
+
+<script>
+ $("select").on('change', function() {
+   day_start = $("#reservation_start_date_3i").val();
+   month_start = $("#reservation_start_date_2i").val(); 
+   year_start = $("#reservation_start_date_1i").val();
+
+   day_end = $("#reservation_end_date_3i").val();
+   month_end = $("#reservation_end_date_2i").val();
+   year_end = $("#reservation_end_date_1i").val();
+
+
+   price = $("#price_per_night").html();
+   // ppn = parseFloat(price);
+
+   var date_start  = new Date(month_start + "/" + day_start + "/" + year_start);
+   var date_end  = new Date(month_end + "/" + day_end + "/" + year_end);
+
+   var timeDiff = Math.abs(date_end.getTime() - date_start.getTime());
+   var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+   total = diffDays * price;
+
+   $("#totalprice").html(total);
+ });
+</script>
+
+

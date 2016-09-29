@@ -12,3 +12,10 @@
 #facebook_app_id: "338695019813681"
 fb_key: '338695019813681'
 fb_secret: bef8cda43c9df9870a472468c29a0a60
+
+GMAIL_USERNAME: 'arsytest@gmail.com'
+GMAIL_PASSWORD: 'January13'
+
+BRAINTREE_PRIVATE_KEY: 'e04c8ef806fe8a67fe582adde0de8a9e'
+BRAINTREE_MERCHANT_ID: 'ttjddj9vkrqtshrk'
+BRAINTREE_PUBLIC_KEY: '8c7phgt3w8n6dd47'
