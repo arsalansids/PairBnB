@@ -35,6 +35,11 @@ gem 'mini_magick'
 #active job
 gem 'sidekiq'
 
+#For managing, stopping rails server and Sidekiq
+gem 'foreman'
+
+gem 'rails_12factor'
+
 gem 'braintree'
 
 # Use jquery as the JavaScript library
